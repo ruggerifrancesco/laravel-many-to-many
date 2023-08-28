@@ -43,8 +43,9 @@ class ProjectController extends Controller
         $dataProject = $request->validate([
             'title' => ['required', 'unique:projects','min:5', 'max:255'],
             'goals' => ['required', 'array', 'min:1'],
+            'technologies' => ['required', 'array', 'min:1'],
             'budget' => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/', 'max:99999999.99'],
-            'image' => ['required', 'image', 'max:1024'],
+            'image' => ['image', 'max:1024'],
             'nPartecipants' => ['required', 'integer', 'min:1'],
             'description' => ['required', 'min:30'],
         ]);
@@ -57,6 +58,8 @@ class ProjectController extends Controller
         }
 
         $newProject = Project::create($dataProject);
+
+        $newProject->technologies()->sync($request->input('technologies'));
 
         return redirect()->route('admin.projects.index')->with('success', 'Project created successfully');
     }
