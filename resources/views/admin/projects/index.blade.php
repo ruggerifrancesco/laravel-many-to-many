@@ -28,7 +28,7 @@
                                     {{ $project->title }}
                                 </td>
                                 <td>
-                                    {{ $project->type->name }}
+                                    {{ $project->type->name ?? 'No type set yet...' }}
                                 </td>
                                 <td>
                                     {{ $project->nPartecipants }}
