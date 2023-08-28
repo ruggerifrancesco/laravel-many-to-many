@@ -69,6 +69,22 @@
                                 @enderror
                             </div>
 
+                            <div class="col-12 text-center mb-4">
+                                <h6 class="m-0 mb-3">
+                                    <strong>Technlogies</strong>
+                                </h6>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    @foreach ($technologies as $technology)
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                            <label class="form-check-label me-4" for="flexCheckDefault">
+                                                {{ $technology->name }}
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+
                             <div class="col-12">
                                 <div class="row">
                                     <div class="col-6">
