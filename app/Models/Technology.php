@@ -15,7 +15,7 @@ class Technology extends Model
         'color',
     ];
 
-    public function project() {
+    public function projects() {
         return $this->belongsToMany(Project::class);
     }
 }
