@@ -99,6 +99,7 @@ class ProjectController extends Controller
         $dataProject = $request->validate([
             'title' => ['required','min:5', 'max:255', Rule::unique('projects')->ignore($project->id)],
             'goals' => ['required', 'array', 'min:1'],
+            'technologies' => ['required', 'array', 'min:1'],
             'budget' => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/', 'max:99999999.99'],
             'status' => ['nullable', 'boolean', 'in:0,1'],
             // The validation image not required for input pass form, because it has alredy the value in it
@@ -116,6 +117,7 @@ class ProjectController extends Controller
         }
 
         $project->update($dataProject);
+        $project->technologies()->sync($dataProject['technologies']);
 
         return redirect()->route('admin.projects.index', compact('project'))->with('success', 'Project edited successfully');
     }

@@ -104,7 +104,7 @@
                                     @foreach ($technologies as $technology)
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="technologies[]" id="technology_{{ $technology->id }}"
-                                            value="{{ $technology->id }}" {{ $project->technologies->contains($technology->id) ? 'checked' : '' }}>
+                                                value="{{ $technology->id }}" {{ $project->technologies->contains($technology->id) ? 'checked' : '' }}>
                                             <label class="form-check-label me-4" for="technology_{{ $technology->id }}">
                                                 {{ $technology->name }}
                                             </label>
