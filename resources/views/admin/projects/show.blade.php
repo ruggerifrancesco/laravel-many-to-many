@@ -46,13 +46,29 @@
                             </div>
                           </div>
                         </div>
+                        @if ($project->technlogies)
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                  Technlogies
+                              </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                              <div class="accordion-body">
+                                  <p>
+                                    @dump($project->technlogies)
+                                  </p>
+                              </div>
+                            </div>
+                          </div>
+                        @endif
                         <div class="accordion-item">
                           <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                 Goals
                             </button>
                           </h2>
-                          <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                          <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <ul>
                                     @foreach (json_decode($project->goals) as $goal)
@@ -64,11 +80,11 @@
                         </div>
                         <div class="accordion-item">
                           <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                                 Miscellaneous
                             </button>
                           </h2>
-                          <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                          <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <p>
                                     Partecipants: {{ $project->nPartecipants }}
