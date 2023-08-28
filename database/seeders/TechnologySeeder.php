@@ -29,6 +29,5 @@ class TechnologySeeder extends Seeder
         foreach ($technologies as $technologiesData) {
             Technology::create($technologiesData);
         }
-
     }
 }
