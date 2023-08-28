@@ -42,7 +42,7 @@
                             <h6 class="me-2 my-0">
                                 <strong>Type:</strong>
                             </h6>
-                            {{ $project->type->name }}
+                            {{ $project->type->name ?? 'No type set yet...' }}
                         </div>
                     </div>
 
@@ -94,6 +94,23 @@
                                 @error('description')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
+                            </div>
+
+                            <div class="col-12 text-center mb-4">
+                                <h6 class="m-0 mb-3">
+                                    <strong>Technlogies</strong>
+                                </h6>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    @foreach ($technologies as $technology)
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="technologies[]" id="technology_{{ $technology->id }}"
+                                            value="{{ $technology->id }}" {{ $project->technologies->contains($technology->id) ? 'checked' : '' }}>
+                                            <label class="form-check-label me-4" for="technology_{{ $technology->id }}">
+                                                {{ $technology->name }}
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                </div>
                             </div>
 
                             <div class="col-12">
